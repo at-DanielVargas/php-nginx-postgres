@@ -1,3 +1,3 @@
 #!/bin/sh
-echo -e "${POSTGRES_PASS}\n${POSTGRES_PASS}" | initdb -A md5 --username=${POSTGRES_USER} --pwprompt
+echo -e "${POSTGRES_PASSWORD}\n${POSTGRES_PASSWORD}" | initdb -A md5 --username=${POSTGRES_USER} --pwprompt
 exec postgres
