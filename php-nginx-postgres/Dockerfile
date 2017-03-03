@@ -1,11 +1,6 @@
 FROM alpine:3.5
 
-ENV DEV_USER=dev \
-    DEV_PASS=dev \
-    ROOT_PASS=root \
-    POSTGRES_USER=postgres \
-    POSTGRES_PASS=postgres \
-    PGDATA=/var/lib/postgresql/data
+ENV PGDATA=/var/lib/postgresql/data
 
 RUN apk add --no-cache \
       s6 \
@@ -26,8 +21,6 @@ RUN apk add --no-cache \
     mkdir -p $PGDATA && chmod 0755 $PGDATA && \
     mkdir -p /run/postgresql && chmod g+s /run/postgresql && \
     echo "<?php phpinfo(); ?>" > /www/index.php && \
-    echo "root:${ROOT_PASS}" | chpasswd > /dev/null 2>&1 && \
-    echo -e "${DEV_PASS}\n${DEV_PASS}" | adduser ${DEV_USER} > /dev/null 2>&1 && \
     ssh-keygen -A && \
     rm -f /var/cache/apk/*
 

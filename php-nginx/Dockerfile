@@ -1,9 +1,5 @@
 FROM alpine:3.5
 
-ENV DEV_USER=dev \
-    DEV_PASS=dev \
-    ROOT_PASS=root
-
 RUN apk add --no-cache \
       s6 \
       su-exec \
@@ -19,8 +15,6 @@ RUN apk add --no-cache \
       php7-mbstring && \
     mkdir -p /www && \
     echo "<?php phpinfo(); ?>" > /www/index.php && \
-    echo "root:${ROOT_PASS}" | chpasswd > /dev/null 2>&1 && \
-    echo -e "${DEV_PASS}\n${DEV_PASS}" | adduser ${DEV_USER} > /dev/null 2>&1 && \
     ssh-keygen -A && \
     rm -f /var/cache/apk/*
 
