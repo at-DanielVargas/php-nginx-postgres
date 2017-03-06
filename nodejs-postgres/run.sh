@@ -8,5 +8,5 @@ export POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
 echo "root:${ROOT_PASSWORD}" | chpasswd > /dev/null 2>&1
 echo -e "${DEV_PASSWORD}\n${DEV_PASSWORD}" | adduser ${DEV_USER} > /dev/null 2>&1
 /usr/sbin/sshd -o PermitRootLogin=yes -o UseDNS=no
-chown -R $DEV_USER:$DEV_USER /www /etc/nginx /etc/php7 /var/log /var/lib/nginx /var/lib/postgresql /run/postgresql /tmp /etc/s6.d
+chown -R $DEV_USER:$DEV_USER /code /var/log /var/lib/postgresql /run/postgresql /tmp /etc/s6.d
 exec su-exec $DEV_USER:$DEV_USER /bin/s6-svscan /etc/s6.d
