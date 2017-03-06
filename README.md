@@ -1,1 +1,1 @@
-Docker build scripts for tiny php environments
+Docker build scripts for tiny development environments
