@@ -1,3 +1,4 @@
 #!/bin/sh
 echo -e "${POSTGRES_PASSWORD}\n${POSTGRES_PASSWORD}" | initdb -A md5 --username=${POSTGRES_USER} --pwprompt
+{ echo; echo "host all all 0.0.0.0/0 md5"; } >> "$PGDATA"/pg_hba.conf
 exec postgres
