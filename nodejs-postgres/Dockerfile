@@ -20,6 +20,7 @@ WORKDIR /code
 COPY run.sh /usr/local/bin/run.sh
 COPY s6.d /etc/s6.d
 COPY index.js /code/index.js
+COPY package.json /code/package.json
 
 RUN chmod +x /usr/local/bin/run.sh /etc/s6.d/*/* /etc/s6.d/.s6-svscan/*
 
